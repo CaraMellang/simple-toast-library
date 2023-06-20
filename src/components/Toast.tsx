@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
+import {useToast} from "../hooks/useToast";
+import {Transition} from "./Transition";
 
 export function Toast(){
-    return <ToastContainer>토스트</ToastContainer>
+    const {isRunning, toastRef} = useToast()
+    return <Transition>토스트</Transition>
 }
 
-const ToastContainer = styled.div``
