@@ -1,0 +1,30 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "CaraMellang",
+  "license": "MIT",
+  "private": true,
+  "module": "dist/module.js",
+  "scripts": {
+    "dev": "parcel public/index.html -p 3000",
+    "build": "parcel build public/index.html"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.8",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "parcel": "^2.8.3",
+    "process": "^0.11.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.0",
+    "typescript": "^5.0.4"
+  },
+  "alias": {
+    "@chat": "./src/module/chat",
+    "@chat/*": "./src/module/chat/*"
+  }
+}

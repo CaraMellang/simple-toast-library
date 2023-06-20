@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+dist
+node_modules
+
+
+dev/node_modules
+dev/src/module
+dev/dist
+dev/.parcel-cache

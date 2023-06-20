@@ -1,0 +1,48 @@
+{
+  "name": "@mellang/simple-toast-lib",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/types/index.d.ts",
+  "repository": "NotThings",
+  "author": "CaraMellang",
+  "license": "MIT",
+  "private": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "rollup -c ",
+    "watch": "rollup -cw",
+    "build2": "rollup --config rollup.config.js --watch",
+    "start:dev": "concurrently \"yarn watch \" \"yarn --cwd ./dev run dev \" ",
+    "good:dev": "yarn watch && yarn --cwd ./dev run dev"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-react": "^7.18.6",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-image": "^3.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "@rollup/plugin-url": "^8.0.1",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "concurrently": "^8.0.1",
+    "hoist-non-react-statics": "^3.3.2",
+    "react-router-dom": "^6.11.0",
+    "rollup": "^3.21.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-serve": "^2.0.2",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
