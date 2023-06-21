@@ -1,36 +1,29 @@
 import {ToastContent} from "../types";
 
 export const enum Event {
-    Show,
-    Clear,
-    DidMount,
-    WillUnmount,
-    Change,
-    ClearWaitingQueue
+    SHOW = 'show',
+    HIDE = 'hide',
+    HIDE_ALL = 'hideAll',
 }
+export type Handler<T = any> = (event: T) => void
+
 export const eventManager = {
-    list: new Map(),
-    emitQueue: new Map(),
+    events: new Map(),
 
-
-    emit(content :ToastContent,TOAST_ID:number , ...args: any[]){
-        this.emitQueue.set(TOAST_ID, {content , status:"RUNNING"})
-        const timer = setTimeout(()=>{
-            if(this.emitQueue.has(TOAST_ID)){
-                this.emitQueue.set(TOAST_ID , {content , status:"STOPPED"})
-                setTimeout(()=>{
-                    if(this.emitQueue.has(TOAST_ID)){
-                        this.emitQueue.delete(TOAST_ID)
-                    }
-                },3000)
-            }
-        },5000)
+    on<T = any>(event:Event,callback:Handler<T>){
+        if(!this.events.has(event)) this.events.set(event, []);
+        this.events.get(event).push(callback)
+    },
+    off<T = any>(event: Event){
+        if(this.events.has(event)) this.events.delete(event);
     },
 
-    callBackEmit(event:Event , callback: any){
-        setTimeout(()=>{
-            callback()
-        },0)
+    emit<T = any>(event:Event , ...args :T[]){
+        if(!this.events.has(event)) return;
+        this.events.get(event).forEach((callback:Handler)=> callback(args))
+    },
 
+    allOff(){
+        this.events.clear()
     }
 }
