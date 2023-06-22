@@ -49,18 +49,24 @@ export  function  useToastContainer(){
         }
         else if(action.type === "REMOVING"){}
         else if(action.type === "REMOVE"){
-            toasts?.map(r => {
-                if(r.id === action.id){
-                    setTimeout(() => {
-
-                    }, 4000)
-                }
+            // toasts?.map(r => {
+            //     if(r.id === action.id){
+            //         setTimeout(() => {
+            //
+            //         }, 4000)
+            //     }
+            // })
+            setToasts(prev => {
+                if(!prev) return prev
+                return prev.filter(toast => toast.id !== action.id)
             })
         }
-        else if(action.type === "REMOVE_ALL"){}
+        else if(action.type === "REMOVE_ALL"){
+            setToasts(undefined)
+        }
     }
 
 
 
-    return {toasts:state.toasts , dispatch}
+    return {toasts:toasts , dispatch}
 }

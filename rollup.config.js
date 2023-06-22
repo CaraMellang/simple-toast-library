@@ -44,7 +44,7 @@ const config = [
         input: './src/index.ts',
         output:[
             {
-                dir:'./dev/src/module/chat',
+                dir:'./dev/src/module/toast',
                 format: 'esm',
                 preserveModules:true,
                 preserveModulesRoot:'src'
@@ -61,7 +61,7 @@ const config = [
                 presets: ['@babel/preset-react']
             }),
             commonjs({include:'node_module/**'}),
-            typescript({tsconfig:'./tsconfig.json', outDir:'./dev/src/module/chat', declarationDir:'./dev/src/module/chat'}),
+            typescript({tsconfig:'./tsconfig.json', outDir:'./dev/src/module/toast', declarationDir:'./dev/src/module/toast'}),
             // serve('dist')
             // serve({ contentBase:['','public'], host:'localhost', port:3000 , open:true}),
             url(),

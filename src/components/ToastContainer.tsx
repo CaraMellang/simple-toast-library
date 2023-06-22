@@ -12,7 +12,7 @@ interface Props{
     delay?:number
 }
 
-export function ToastContainer ({position, delay}:Props){
+export function ToastContainer ({position = "bottom-center", delay}:Props){
     const {toasts , dispatch} = useToastContainer()
 
     useEffect(()=>{
@@ -32,7 +32,7 @@ export function ToastContainer ({position, delay}:Props){
 
     return (
         <ToastContainerWrapper>
-            {toasts.map(r => (
+            {toasts && toasts.map(r => (
                 <Transition toasts={toasts} ownToastId={r.id} delay={delay} >
                     <Toast key={r.id} {...r} onClose={handleClose} />
                 </Transition>

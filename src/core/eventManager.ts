@@ -19,6 +19,7 @@ export const eventManager = {
     },
 
     emit<T = any>(event:Event , ...args :T[]){
+        console.log('eventManager(Emit).' , this.events)
         if(!this.events.has(event)) return;
         this.events.get(event).forEach((callback:Handler)=> callback(args))
     },

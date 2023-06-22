@@ -1,4 +1,5 @@
-import {eventManager} from "./eventManager";
+import {Event, eventManager} from "./eventManager";
+import {Toast, ToastConfig, ToastContent, Type} from "../types";
 
 
 let containers = new Map();
@@ -33,3 +34,28 @@ function dispatchToast(content:any , options: any){
 // ) {
 //     return dispatchToast(content, options)
 // }
+
+interface  generateToast {
+    content: ToastContent;
+    type: Type;
+    config?: ToastConfig;
+}
+
+export const generateToast = ({content, type, config}:generateToast):Toast => {
+    return {
+        id:`${++TOAST_ID}`,
+        content,
+        type,
+        config
+    }
+}
+
+
+const hangingToast = ({...toast}: generateToast) => eventManager.emit(Event.SHOW , generateToast({...toast}));
+
+export const toast = (content: ToastContent, config?: ToastConfig) => hangingToast({ content, type: "default", config});
+toast.success = (content: ToastContent, config?: ToastConfig) => hangingToast({ content, type: "success", config});
+toast.error = (content: ToastContent, config?: ToastConfig) => hangingToast({ content, type: "error", config});
+toast.info = (content: ToastContent, config?: ToastConfig) => hangingToast({ content, type: "info", config});
+toast.warning = (content: ToastContent, config?: ToastConfig) => hangingToast({ content, type: "warning", config});
+toast.clearAll = () => eventManager.emit(Event.HIDE_ALL);

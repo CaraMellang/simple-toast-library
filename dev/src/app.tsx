@@ -2,9 +2,15 @@ import {Link, Outlet, Route, Routes} from "react-router-dom";
 import {Home} from "./components/home";
 import {About} from "./components/about";
 import styled from "@emotion/styled";
+import {toast, ToastContainer} from "./module/toast";
 
 
 export default function App(){
+
+    const handleToast = () => {
+        toast("안녕ㅎ세요");
+    }
+
     return(
         <div>
             <div>
@@ -19,7 +25,7 @@ export default function App(){
                         </li>
                     </ul>
                 </nav>
-                <Button>아 귀찮다.</Button>
+                <Button onClick={handleToast} >아 귀찮다.</Button>
             </div>
             <Routes>
                 {/*<Route path="/" />*/}
@@ -29,6 +35,7 @@ export default function App(){
             </Routes>
             <Outlet />
             <ChatContainer>
+                <ToastContainer delay={3000} />
             </ChatContainer>
         </div>
     )
