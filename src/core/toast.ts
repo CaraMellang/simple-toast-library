@@ -51,7 +51,7 @@ export const generateToast = ({content, type, config}:generateToast):Toast => {
 }
 
 
-const hangingToast = ({...toast}: generateToast) => eventManager.emit(Event.SHOW , generateToast({...toast}));
+const hangingToast = ({...toast}: generateToast) => eventManager.emit(Event.SHOW , generateToast(toast));
 
 export const toast = (content: ToastContent, config?: ToastConfig) => hangingToast({ content, type: "default", config});
 toast.success = (content: ToastContent, config?: ToastConfig) => hangingToast({ content, type: "success", config});

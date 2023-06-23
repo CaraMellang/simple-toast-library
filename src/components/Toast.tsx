@@ -14,6 +14,11 @@ export function Toast({
     }:Props){
 
 
-    return <div>토스트</div>
+    return <ToastContainer>{id}번 토스트</ToastContainer>
 }
 
+const ToastContainer = styled.div`
+  padding: 12px 18px;
+  background-color: #009c72;
+  color: white;
+`

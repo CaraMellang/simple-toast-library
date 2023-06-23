@@ -43,7 +43,7 @@ export  function  useToastContainer(){
     const dispatch = (action: ToastAction) => {
         if(action.type === "ADD"){
             setToasts(prev => {
-                if(!prev) return [action.toast]
+                if(!prev) return [action.toast];
                 return [...prev , action.toast]
             })
         }

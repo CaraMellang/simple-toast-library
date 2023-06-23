@@ -30,6 +30,8 @@ export function ToastContainer ({position = "bottom-center", delay}:Props){
         []
     )
 
+    console.log(toasts);
+
     return (
         <ToastContainerWrapper>
             {toasts && toasts.map(r => (

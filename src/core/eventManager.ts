@@ -12,19 +12,19 @@ export const eventManager = {
 
     on<T = any>(event:Event,callback:Handler<T>){
         if(!this.events.has(event)) this.events.set(event, []);
-        this.events.get(event).push(callback)
+        this.events.get(event).push(callback);
     },
     off<T = any>(event: Event){
         if(this.events.has(event)) this.events.delete(event);
     },
 
-    emit<T = any>(event:Event , ...args :T[]){
-        console.log('eventManager(Emit).' , this.events)
+    emit<T = any>(event:Event , args : T){
+        console.log('eventManager(Emit).' , this.events , args);
         if(!this.events.has(event)) return;
-        this.events.get(event).forEach((callback:Handler)=> callback(args))
+        this.events.get(event).forEach((callback:Handler)=> callback(args));
     },
 
     allOff(){
-        this.events.clear()
+        this.events.clear();
     }
 }

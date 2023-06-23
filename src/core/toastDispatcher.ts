@@ -11,6 +11,7 @@ interface ToastDispatcher{
 export const toastDispatcher = ({dispatch, delay}:ToastDispatcher) => {
     eventManager.on(Event.SHOW, (toast: Toast) => {
         dispatch({type:"ADD" , toast});
+        console.log("is this event run?", toast);
         if (delay){
             dispatch({type:"REMOVING" , id: toast.id})
             setTimeout(()=>{
