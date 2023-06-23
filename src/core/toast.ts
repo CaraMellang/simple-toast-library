@@ -16,17 +16,17 @@ function getToastId(){
 }
 
 //컨테이너가 없으면 여기서 자체 큐스택에 저장됨.
-function dispatchToast(content:any , options: any){
+// function dispatchToast(content:any , options: any){
     //컨테이너가 존재할 때.
     // if(containers.size > 0){
-        eventManager.emit(content, generateToastId(),options);
+    //     eventManager.emit(content, generateToastId(),options);
     // }
     // else{
     //     queue.push({ content, options });
     // }
 
-    return options.toastId;
-}
+    // return options.toastId;
+// }
 
 // function toast<TData = unknown>(
 //     content: ToastContent<TData>,
