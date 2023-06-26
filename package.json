@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
-  "module": "./dist/index.es.js",
+  "module": "dist/index.js",
   "types": "./dist/types/index.d.ts",
   "repository": "NotThings",
   "author": "CaraMellang",
@@ -16,6 +16,7 @@
     "build": "rollup -c ",
     "watch": "rollup -cw",
     "build2": "rollup --config rollup.config.js --watch",
+    "build:types": "tsc --emitDeclarationOnly",
     "start:dev": "concurrently \"yarn watch \" \"yarn --cwd ./dev run dev \" ",
     "good:dev": "yarn watch && yarn --cwd ./dev run dev"
   },
